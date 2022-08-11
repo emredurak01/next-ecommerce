@@ -2,11 +2,7 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
 import { useAuth } from "../context/AuthContext";
-import {
-  MenuIcon,
-  ShoppingBagIcon,
-  XIcon,
-} from "@heroicons/react/outline";
+import { MenuIcon, ShoppingBagIcon, XIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 const currencies = ["USD", "CAD", "AUD", "EUR", "GBP"];
 const navigation = {
@@ -240,7 +236,6 @@ function Navbar() {
                       <span className="sr-only">Open menu</span>
                       <MenuIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
-
                   </div>
 
                   {/* Logo (lg-) */}
@@ -263,22 +258,22 @@ function Navbar() {
                     </Link>
 
                     <div className="flex items-center lg:ml-8">
-                      
-
                       {/* Cart */}
-                      <div className="ml-4 flow-root lg:ml-8">
-                        <Link href="/cart">
-                          <a className="group -m-2 p-2 flex items-center">
-                            <ShoppingBagIcon
-                              className="flex-shrink-0 h-6 w-6 text-white"
-                              aria-hidden="true"
-                            />
-                            <span className="sr-only">
-                              items in cart, view bag
-                            </span>
-                          </a>
-                        </Link>
-                      </div>
+                      {user ? (
+                        <div className="flow-root ">
+                          <Link href="/cart">
+                            <a className="group -m-2 p-2 flex items-center">
+                              <ShoppingBagIcon
+                                className="flex-shrink-0 h-6 w-6 text-white"
+                                aria-hidden="true"
+                              />
+                              <span className="sr-only">
+                                items in cart, view bag
+                              </span>
+                            </a>
+                          </Link>
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 </div>
